@@ -1,0 +1,37 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Weather Card",
+  "version": "1.0.0",
+  "identifier": "com.hermes.weathercard",
+  "build": {
+    "frontendDist": "../frontend",
+    "beforeBuildCommand": ""
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Weather Card · 天气卡片",
+        "width": 980,
+        "height": 760,
+        "minWidth": 420,
+        "minHeight": 560,
+        "center": true,
+        "resizable": true,
+        "dragDropEnabled": false
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["nsis"],
+    "icon": ["icons/icon.ico"],
+    "windows": {
+      "nsis": {
+        "installMode": "currentUser"
+      }
+    }
+  }
+}

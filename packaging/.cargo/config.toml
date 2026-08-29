@@ -1,0 +1,5 @@
+# MSVC 链接器显式指路（PATH 里 Git 的 link.exe 会抢先导致 "extra operand" 错误）
+# 路径写死 D:/BuildTools 安装位置
+[target.x86_64-pc-windows-msvc]
+linker = "D:/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/link.exe"
+rustflags = ["-C", "link-arg=/LIBPATH:D:/BuildTools/VC/Tools/MSVC/14.44.35207/lib/x64"]

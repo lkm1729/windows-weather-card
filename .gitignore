@@ -1,0 +1,15 @@
+# ==== 构建产物（几 GB 编译缓存，绝不入库）====
+packaging/target/
+packaging/target-release/
+target/
+
+# ==== 用户本地运行产物 ====
+download/weather-card.exe
+
+# ==== 系统/编辑器 ====
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.log
+.vscode/
+.idea/

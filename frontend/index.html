@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather Card · 天气卡片</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- 动态背景层：渐变兜底 -->
+  <div class="bg-layer" id="bgLayer"></div>
+  <!-- 城市背景图（Wikipedia 实景，加载失败自动隐藏露出渐变） -->
+  <div class="bg-photo" id="bgPhoto"></div>
+  <!-- 天气动画层：雨/雪/云/星空/雾/雷电 -->
+  <canvas class="bg-fx" id="bgFx"></canvas>
+
+  <main class="stage">
+    <!-- 顶栏：城市切换 + 搜索 -->
+    <header class="topbar glass">
+      <div class="city-info">
+        <span class="city-flag" id="cityFlag">��</span>
+        <span class="city-name" id="cityName">加载中…</span>
+        <span class="city-country" id="cityCountry"></span>
+      </div>
+      <div class="city-picker">
+        <select id="citySelect" class="glass-select" aria-label="选择城市"></select>
+        <button id="refreshBtn" class="icon-btn" title="刷新天气" aria-label="刷新">⟳</button>
+      </div>
+    </header>
+
+    <!-- 搜索栏（任意城市，带联想） -->
+    <div class="search-wrap">
+      <input type="text" id="searchInput" class="search-input glass"
+             placeholder="🔍 搜索全球任意城市，如 Tokyo / 巴黎 / New York…"
+             autocomplete="off" />
+      <div class="search-suggest" id="searchSuggest"></div>
+    </div>
+
+    <!-- 翻页时钟：时:分:秒 -->
+    <section class="clock-wrap">
+      <div class="date-strip glass" id="dateStrip">
+        <span id="dateYear">----年</span>
+        <span id="dateMonth">--月</span>
+        <span id="dateDay">--日</span>
+        <span class="dot">·</span>
+        <span id="dateWeek">星期-</span>
+      </div>
+      <div class="flipclock" id="flipclock" aria-label="当前时间"></div>
+    </section>
+
+    <!-- 天气卡片 -->
+    <section class="weather-card glass" id="weatherCard">
+      <div class="weather-main">
+        <div class="weather-icon" id="weatherIcon">⏳</div>
+        <div class="weather-temp">
+          <span id="weatherTemp">--</span><span class="deg">°C</span>
+        </div>
+        <div class="weather-desc" id="weatherDesc">获取天气数据中…</div>
+      </div>
+      <div class="weather-meta">
+        <div class="meta-item">
+          <span class="meta-label">体感</span>
+          <span class="meta-value" id="metaFeels">--°</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">湿度</span>
+          <span class="meta-value" id="metaHumidity">--%</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">风速</span>
+          <span class="meta-value" id="metaWind">-- km/h</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">气压</span>
+          <span class="meta-value" id="metaPressure">-- hPa</span>
+        </div>
+      </div>
+      <div class="forecast-row" id="forecastRow"><!-- 未来5天，JS 填充 --></div>
+    </section>
+
+    <footer class="statusbar" id="statusBar">数据源 Open-Meteo · 每分钟校时</footer>
+  </main>
+
+  <script src="js/config.js"></script>
+  <!-- pinyin-pro：中文输入实时转拼音，支撑中文前缀联想（北→bei→Beijing） -->
+  <script src="https://cdn.jsdelivr.net/npm/pinyin-pro@3/dist/index.min.js"></script>
+  <!-- opencc-js：简体→繁体转换（Open-Meteo 中文数据混杂繁体，西雅圖/東京等只有繁体条目） -->
+  <script src="https://cdn.jsdelivr.net/npm/opencc-js@1.0.5/dist/umd/full.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/bganimate.js"></script>
+  <script src="js/flipclock.js"></script>
+  <script src="js/weather.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
