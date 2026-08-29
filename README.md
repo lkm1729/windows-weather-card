@@ -5,7 +5,7 @@
 [![Size](https://img.shields.io/badge/Size-~3MB-success.svg)]()
 
 轻量级 Windows 桌面天气应用：**液态玻璃拟态 UI + iOS 翻页时钟 + 全球城市实时天气 + 城市街景背景**。
-零依赖、免安装、免 API 密钥，开箱即用。
+零依赖、免安装、免 API 密钥，开箱即用。**声明：此项目由GLM-5.3和GLM-5.3-Flash协助共同开发**
 
 > 📥 **[点此前往下载页](https://github.com/lkm1729/windows-weather-card/releases)** —— 下载 `weather-card.exe`，双击即用，无需安装。
 
